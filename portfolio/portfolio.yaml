@@ -37,8 +37,8 @@ spec:
         volumeMounts:
         - name: code-volume
           mountPath: /usr/share/nginx/html  # chemin typique où ton serveur web cherche le code
-        - name: tls-volume
-          mountPath: /etc/tls
+        - name: portfolio-tls-secret
+          mountPath: /etc/nginx/ssl/
           readOnly: true
       volumes:
       - name: code-volume
@@ -47,6 +47,14 @@ spec:
       - name: tls-volume
         secret:
           secretName: portfolio-tls-secret
+      - name: tls-certs
+        secret:
+          secretName: portfolio-tls-secret
+          items:
+            - key: tls.crt
+              path: lidobel.ovh.crt
+            - key: tls.key
+              path: lidobel.ovh.pem
 ---
 apiVersion: v1
 kind: Service
