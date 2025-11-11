@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
       - name: portfolio-container
-        image: lidobel3/portfolio:1.2.0
+        image: lidobel3/portfolio
         ports:
         - containerPort: 443
         volumeMounts:
